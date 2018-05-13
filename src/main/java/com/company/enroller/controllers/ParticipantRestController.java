@@ -48,12 +48,12 @@ public class ParticipantRestController {
 	 return new ResponseEntity<Participant>(participant, HttpStatus.CREATED);
 	 	 }
 	 @RequestMapping(value = "/{id}" , method = RequestMethod.PUT)
-	 	 public ResponseEntity<?> updateParticipant(@PathVariable("id") String login, @RequestBody Participant newParticipant){
+	 	 public ResponseEntity<?> updateParticipant(@PathVariable("id") String login, @RequestBody Participant updateParticipant){
 	 	 Participant participant = participantService.findByLogin(login);
 	 		 if (participant == null) {
-	 			 return new ResponseEntity("Unable to modify. A participant with login " + participant.getLogin() + " do not exist.", HttpStatus.CONFLICT);
+	 			 return new ResponseEntity(HttpStatus.NOT_FOUND);
 	 		 }
-	 		 participant.setPassword(newParticipant.getPassword());
+	 		 participant.setPassword(updateParticipant.getPassword());
 	 		 participantService.updateParticipant(participant);
 	 		 return new ResponseEntity("A participant with login " + participant.getLogin() + " has been update.", HttpStatus.OK);
 	 	 }
