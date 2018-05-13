@@ -57,17 +57,7 @@ public class ParticipantRestController {
 	 		 participantService.updateParticipant(participant);
 	 		 return new ResponseEntity("A participant with login " + participant.getLogin() + " has been update.", HttpStatus.OK);
 	 	 }
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
+
 	 @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	 	 public ResponseEntity<?> deleteParticipant(@PathVariable("id") String login){
 	 		 if (participantService.findByLogin(login) == null) {
